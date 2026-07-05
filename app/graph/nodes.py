@@ -15,7 +15,7 @@ class Plan(BaseModel):
 
 class Reflection(BaseModel):
     summary: str = Field(description="A safe, high-level summary of the current progress and reasoning.")
-    is_complete: bool = Field(description="True if the task is completely resolved and we have a final answer.")
+    is_complete: bool = Field(description="A boolean value (true or false, NOT a string). True if the task is completely resolved and we have a final answer.")
     final_answer: str = Field(description="The final answer to the user, if complete.")
 
 def planner_node(state: AgentState) -> dict:
@@ -54,7 +54,8 @@ def reflect_node(state: AgentState) -> dict:
     llm = get_llm()
     sys_msg = SystemMessage(
         content="Review the conversation history and the plan. Provide a brief summary of what has been done so far. "
-                "If the task is fully resolved and the assistant provided the final answer, set is_complete to True and provide the final_answer."
+                "If the task is fully resolved and the assistant provided the final answer, set is_complete to true and provide the final_answer. "
+                "CRITICAL: The is_complete field MUST be a strict boolean literal (true or false), never a string like 'True'."
     )
     
     reflector = llm.with_structured_output(Reflection)
