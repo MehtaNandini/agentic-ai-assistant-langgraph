@@ -41,7 +41,9 @@ def agent_node(state: AgentState) -> dict:
     plan_text = state.get('plan', 'No plan yet.')
     sys_msg = SystemMessage(
         content=f"You are a helpful AI assistant. You have a plan: {plan_text}. "
-                f"Execute the steps using tools. If you have finished the plan, explain the final result."
+                f"Execute the steps using the provided tools. You MUST use the actual tool-calling function mechanism to invoke tools. "
+                f"DO NOT output raw JSON strings or dictionaries in your text response. "
+                f"If you have finished the plan, explain the final result clearly in plain text."
     )
     
     response = llm_with_tools.invoke([sys_msg] + state["messages"])

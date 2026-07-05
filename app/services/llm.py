@@ -1,13 +1,13 @@
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def get_llm():
     """Initializes and returns the LLM instance."""
-    api_key = os.environ.get("GOOGLE_API_KEY")
+    api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
-        raise ValueError("GOOGLE_API_KEY environment variable is missing")
+        raise ValueError("GROQ_API_KEY environment variable is missing")
     
-    return ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+    return ChatGroq(model="llama-3.1-70b-versatile", temperature=0)
