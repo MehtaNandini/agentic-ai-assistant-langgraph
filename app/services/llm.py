@@ -10,4 +10,4 @@ def get_llm():
     if not api_key:
         raise ValueError("GOOGLE_API_KEY environment variable is missing")
     
-    return ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0)
+    return ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", temperature=0)
