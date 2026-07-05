@@ -77,9 +77,10 @@ The API will be available at `http://localhost:8001`. You can check the health e
 ### 5. Run the Streamlit UI
 In a new terminal window, start the frontend app:
 ```bash
-streamlit run ui/streamlit_app.py
+streamlit run ui/streamlit_app.py --server.port 8505
 ```
-The UI will be accessible at `http://localhost:8501`.
+The UI will be accessible at `
+5`.
 
 ## Examples & Usage 💡
 

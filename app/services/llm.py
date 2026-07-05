@@ -10,4 +10,5 @@ def get_llm():
     if not api_key:
         raise ValueError("GROQ_API_KEY environment variable is missing")
     
-    return ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
+    # Using the 8B model because the 70B model hit the daily rate limit
+    return ChatGroq(model="llama-3.1-8b-instant", temperature=0)
