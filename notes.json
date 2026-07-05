@@ -1,4 +1,5 @@
 {
     "test_topic": "This is a test.",
-    "My Favorite Color": "Blue"
+    "My Favorite Color": "Blue",
+    "Project Ideas": "Build a LangGraph AI assistant, create a portfolio website, and learn Rust."
 }
