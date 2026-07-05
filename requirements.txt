@@ -1,0 +1,13 @@
+langgraph
+langgraph-checkpoint-sqlite
+langchain
+langchain-core
+langchain-google-genai
+fastapi
+uvicorn
+streamlit
+pydantic
+pytest
+ruff
+python-dotenv
+duckduckgo-search
