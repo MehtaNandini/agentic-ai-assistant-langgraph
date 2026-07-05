@@ -70,9 +70,9 @@ Edit `.env` to include your provider's API key (e.g., `GOOGLE_API_KEY`).
 ### 4. Run the Backend API
 Start the FastAPI server:
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 ```
-The API will be available at `http://localhost:8000`. You can check the health endpoint at `http://localhost:8000/health`.
+The API will be available at `http://localhost:8001`. You can check the health endpoint at `http://localhost:8001/health`.
 
 ### 5. Run the Streamlit UI
 In a new terminal window, start the frontend app:

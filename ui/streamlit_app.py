@@ -4,7 +4,7 @@ import json
 import uuid
 
 # Configuration
-API_URL = "http://localhost:8000/run-agent"
+API_URL = "http://localhost:8001/run-agent"
 
 st.set_page_config(page_title="Agentic AI Assistant", page_icon="🤖", layout="wide")
 
