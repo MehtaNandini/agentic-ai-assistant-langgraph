@@ -26,12 +26,19 @@ def planner_node(state: AgentState) -> dict:
         return {}
         
     messages = state.get("messages", [])
-    sys_msg = SystemMessage(content="You are an expert planner. Break down the user's task into logical steps. Return ONLY the plan steps.")
+    sys_msg = SystemMessage(
+        content="You are an expert planner. Break down the user's task into logical steps. Return ONLY the plan steps. "
+                "CRITICAL: You must use the provided function schema. Output purely valid JSON without any prefixes like 'Plan=' or brackets like '['."
+    )
     
     planner = llm.with_structured_output(Plan)
-    result = planner.invoke([sys_msg] + messages)
-    
-    return {"plan": result.plan_steps}
+    try:
+        result = planner.invoke([sys_msg] + messages)
+        return {"plan": result.plan_steps}
+    except Exception as e:
+        print(f"Warning: Planner structured output failed: {e}")
+        # Fallback plan if JSON fails
+        return {"plan": "1. Analyze the request.\n2. Use the appropriate tools to complete the task.\n3. Provide the final answer."}
 
 def agent_node(state: AgentState) -> dict:
     """The main agent that decides which tools to call or what to say."""
