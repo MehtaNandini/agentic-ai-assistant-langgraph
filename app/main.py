@@ -19,9 +19,12 @@ def run_agent(request: AgentRequest):
     try:
         config = {"configurable": {"thread_id": request.thread_id}}
         
-        # Initial input state
+        # Initial input state. We reset plan and final_answer so the agent plans fresh for the new task.
         input_state = {
-            "messages": [HumanMessage(content=request.task)]
+            "messages": [HumanMessage(content=request.task)],
+            "plan": "",
+            "final_answer": "",
+            "reasoning_summary": ""
         }
         
         # Run the graph
