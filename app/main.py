@@ -10,9 +10,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Agentic AI Assistant API. See /docs for documentation."}
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
 
 @app.post("/run-agent", response_model=AgentResponse)
 def run_agent(request: AgentRequest):
